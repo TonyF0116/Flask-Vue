@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Utility{% endblock %}</h1>
+  <a class="action" href="{{ url_for('index') }}">Go back to index page</a>
+{% endblock %}
+
+
+{% block content %}
+  <form method="post">
+
+    <label for="title">Check if the input is used in this project</label>
+    <input name="input">
+
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

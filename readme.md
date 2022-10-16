@@ -1,0 +1,1 @@
+run with: flask --app Flask-Vue-Sample --debug run
