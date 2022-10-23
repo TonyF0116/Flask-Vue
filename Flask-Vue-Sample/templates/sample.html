@@ -7,11 +7,37 @@
 
 
 {% block content %}
-  <form method="post">
 
-    <label for="title">Check if the input is used in this project</label>
-    <input name="input">
-
-    <input type="submit" value="Save">
-  </form>
+<div id="app">
+  <label for="title">Check if the input is used in this project: </label>
+  <p><input v-model = "input"></p>
+  <button @click=check([[input]])>Check</button>
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = {
+      delimiters: ["[[", "]]"],
+      data: function () {
+          return {
+              input: ""
+          }
+      },
+      methods: {
+          check(input) {
+            if (input == "") {
+              alert("Input is required.")
+            } else {
+              included = "{{using}}".includes(input)
+              
+              if (included) {
+                alert("Input is used.")
+              } else {
+                alert("Input is not used.")
+              }
+            }
+          }
+      }
+  }
+  Vue.createApp(app).mount('#app')
+</script>
 {% endblock %}

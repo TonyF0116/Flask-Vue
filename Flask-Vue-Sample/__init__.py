@@ -1,4 +1,4 @@
-from flask import Flask, flash, render_template, request
+from flask import Flask, flash, render_template, request, jsonify
 
 
 def create_app():
@@ -16,19 +16,20 @@ def create_app():
 
     @app.route('/sample', methods=('GET', 'POST'))
     def sample():
-        if request.method == 'POST':
-            using = ['flask', 'vue', 'mysql', 'aws']
-            user_input = request.form['input']
-            message = None
 
-            if not user_input:
-                message = 'Input is required'
-            elif user_input not in using:
-                message = 'Input is not used'
-            else:
-                message = 'Input is used'
-            flash(message)
+        # if request.method == 'POST':
+        #     using = ['flask', 'vue', 'mysql', 'aws']
+        #     user_input = request.form['input']
+        #     message = None
 
-        return render_template('sample.html')
+        #     if not user_input:
+        #         message = 'Input is required'
+        #     elif user_input not in using:
+        #         message = 'Input is not used'
+        #     else:
+        #         message = 'Input is used'
+        #     flash(message)
+
+        return render_template('sample.html', using='flask vue mysql aws')
 
     return app
